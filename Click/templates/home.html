@@ -1,0 +1,55 @@
+<!--CS 304 Project
+Dana, Erica, and Gabby -->
+<!DOCTYPE html>
+<html lang ="en" >
+<head>
+    <meta charset = 'utf-8'>
+    <meta name= author content= "Gabby Liu"
+    <title>{{title}}</title>
+    {% block head %}
+    <link type="text/css" rel="stylesheet" href= "{{url_for('static', filename ='style.css')}}">
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head> 
+
+
+
+<body>  
+    <nav>
+        <a id='navLK' href="{{ url_for('login') }}"> Login </a>
+        <a id='navLK' href="{{ url_for('jobs') }}"> Jobs </a>
+    </nav>
+
+    <br>
+    
+    <main_body>
+    {% block title %}
+    <h1>CLICK </h1>
+    {% endblock %}
+    <br>   
+    
+    {% for msg in get_flashed_messages() %}
+    <class="error"> {{msg}} </class>
+    {% endfor %}
+    
+    {% block content %}
+    {% endblock %}
+    
+    {% block scripts %}
+    {% endblock %}
+    
+    </main_body>
+<<<<<<< HEAD
+
+<script src="https://code.jquery.com/jquery.js"></script>
+{% block jquery_scripts %}
+<script>
+console.log('jQuery loaded');
+</script>
+{% endblock %}
+=======
+>>>>>>> 35fd6e7d02b97dc3ceff00a7d412088f48446f28
+
+</body>
+
+</html>

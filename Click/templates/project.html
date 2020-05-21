@@ -1,0 +1,71 @@
+<!--CS 304 Project
+Gabby
+Page that helps the user to filter jobs-->
+
+{% extends "home.html" %}
+
+{%block content %}
+      
+<h1>Job Poster Page</h1>
+    <p> Welcome to Click! </p>
+       
+    <p>You can <a href="posting/{{pid}}">post a new project</a>, or search potential
+    <a href="searchStudent.html">student candidates</a>.</p>
+
+{% endblock %}
+
+
+{% block title %} 
+    <h1>Search Project </h1>
+    
+{% endblock %}
+
+{% block content %}
+        
+    <form method=POST action="/reset/">
+        <input type="submit" name="submit-reset" value="Reset Projects">
+    </form>
+    
+    <div class = "row">
+        <div class = "blockLeft">
+            <form name="FilterForm" id="FilterForm" method=POST action="/filterProjects/sortBy/">
+                <label for="menu-tt">Order By:</label>
+                <select name="menu-tt">
+                  <option value="none">Select</option>
+                    <option value = "Min Hours Ascending" > Min Hours Ascending</option>
+                    <option value = "Pay Descending" > Pay Descending</option>
+                    <option value = "Alphabetical By Location" > Alphabetical By Location </option>
+                 </select>
+                <p><label>Filter by Location:</label></p>
+                <ul>
+                    <li><input type="checkbox" name="type" value="local" >local</li>
+                    <li><input type="checkbox" name="type"  value="remote" >remote</li>
+                </ul>
+                <input type="submit" name="submit-btn" value="Sort">
+            </form>
+        </div>
+        
+        <div class = "tableMiddle">  
+            <table id="project-list" border=1>
+                <tr>
+                    <th>Project ID</th>
+                    <th>Project Name</th>
+                    <th>Min Hours</th>
+                    <th>Pay</th>
+                    <th>Location</th>
+                </tr>
+    
+                <!-- Fills out project table --> 
+                {% for project in allProjects %}
+                <tr data-tt="{{project.pid}}">
+                    <td class="pid">{{project.pid}}</td>
+                    <td class="description">{{project.name}}</td>
+                    <td class="minHours">{{project.minHours}}</td>
+                    <td class="pay">{{project.pay}}</td>
+                    <td class="location">{{project.location}}</td>
+                </tr>
+                {% endfor %}
+    
+            </table>
+        </div>
+    </div>

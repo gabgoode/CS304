@@ -1,0 +1,45 @@
+<!--CS 304 Project
+Gabby
+Page that lists all available students-->
+
+
+{% extends "jobPoster.html" %}
+
+{% block title %} Search {% endblock %}
+
+
+{%block content %}
+
+<h1>Show All Students</h1>
+
+<form method="POST" action="">
+    <p>
+    <label for="searchStudents">Search:</label>
+    <input id="searchStudents" name="searchStudents" type="text" >
+    <input class="submit" name="submit" type="submit" value="Search">
+    </p>
+    
+</form>
+
+<table id="studentsList">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Type</th>
+    </tr>
+    {% for student in students %}
+        <tr name={{student.email}}>
+        <td class="name">{{student.name}}</td>
+        <td class="active">{{student.active}}</td>
+        <td class="userType">{{student.userType}}</td>
+        <!-- <td><form method="post" action="{{url_for('jobs')}}">
+            <input type="submit" id="applyButton" value="Apply">
+            </form>
+        </td> -->
+    </tr>            
+    {% endfor %}       
+   </table>                 
+
+
+{% endblock %}

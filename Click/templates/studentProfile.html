@@ -1,0 +1,25 @@
+<!--CS 304 Project
+Dana -->
+{% extends "home.html" %}
+
+{%block content %}
+    
+<h1>Your Profile</h1>
+
+<h3>Personal Information</h3>
+
+<p>Name: {{name}}</p>
+
+<p>Email: {{email}}</p>
+
+<p>Actively seeking employment: {{active}}</p>
+ 
+<h3>Skills</h3>
+ <!--list skills-->      
+{% for skill in skills %}
+    <p>{{skill.skill}}</p>
+{% endfor %}
+
+<p><a href="{{url_for('studentUpdate', email=email)}}">Update profile</a></p>
+
+{% endblock %}

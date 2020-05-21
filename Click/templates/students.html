@@ -1,0 +1,39 @@
+<!--CS 304 Project
+Dana 
+Page that lists all available students-->
+{% extends "home.html" %}
+
+{%block content %}
+
+<h1>Show All Students</h1>
+
+<form method="POST" action="">
+    <p>
+    <label for="searchstudents">Search:</label>
+    <input id="searchstudents" name="searchstudents" type="text" >
+    <input class="submit" name="submit" type="submit" value="Search">
+    </p>
+    
+</form>
+
+<table id="studentsList">
+    <tr>
+        <th>Student Name</th>
+        <th>Student Email</th>
+        <th>Active Type</th>
+    </tr>
+    {% for student in students %}
+        <tr name={{student.email}}>
+        <td class="name">{{student.name}}</td>
+        <td class="email">{{student.email}}</td>
+        <td class="userType">{{student.userType}}</td>
+        <!-- <td><form method="post" action="{{url_for('jobs')}}">
+            <input type="submit" id="applyButton" value="Apply">
+            </form>
+        </td> -->
+    </tr>            
+    {% endfor %}       
+   </table>                 
+
+
+{% endblock %}
